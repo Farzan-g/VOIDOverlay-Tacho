@@ -1,0 +1,119 @@
+<Window x:Class="VOIDOverlay.Tacho.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="VOID Overlay Tacho Settings"
+        Icon="pack://application:,,,/assets/Tacho.ico"
+        Width="480" Height="740" MinWidth="420" MinHeight="580"
+        WindowStartupLocation="CenterScreen" Background="#111720" Foreground="#F2F4F7">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <StackPanel Margin="0,0,0,14">
+            <TextBlock Text="VOID OVERLAY TACHO" FontSize="11" FontWeight="Bold" Foreground="#4DE3D2" />
+            <TextBlock Text="Settings" FontSize="24" FontWeight="SemiBold" />
+        </StackPanel>
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+            <StackPanel>
+                <TextBlock Text="GENERAL" Foreground="#FFAE5C" FontWeight="Bold" Margin="0,4,0,8" />
+                <CheckBox x:Name="StartupCheck" Content="Start with Windows" Margin="0,4" />
+                <CheckBox x:Name="TopmostCheck" Content="Keep overlay on top" Margin="0,4" />
+                <CheckBox x:Name="LockedCheck" Content="Lock position" Margin="0,4" />
+                <CheckBox x:Name="ClickThroughCheck" Content="Click through overlay" Margin="0,4" />
+                <CheckBox x:Name="StartVisibleCheck" Content="Show overlay at launch" Margin="0,4" />
+
+                <TextBlock Text="APPEARANCE" Foreground="#FFAE5C" FontWeight="Bold" Margin="0,18,0,8" />
+                <CheckBox x:Name="BackgroundEnabledCheck" Content="Show background" Margin="0,4" />
+                <TextBlock Text="Background color (#RRGGBB)" Margin="0,8,0,3" />
+                <TextBox x:Name="BackgroundColorBox" Width="120" HorizontalAlignment="Left" />
+                <TextBlock Text="Background opacity" Margin="0,8,0,3" />
+                <Slider x:Name="BackgroundOpacitySlider" Minimum="0" Maximum="1" TickFrequency="0.05" IsSnapToTickEnabled="True" />
+                <TextBlock Text="Overlay opacity" Margin="0,8,0,3" />
+                <Slider x:Name="OverlayOpacitySlider" Minimum="0.3" Maximum="1" TickFrequency="0.05" IsSnapToTickEnabled="True" />
+                <TextBlock Text="Text color (#RRGGBB)" Margin="0,8,0,3" />
+                <TextBox x:Name="TextColorBox" Width="120" HorizontalAlignment="Left" />
+                <TextBlock Text="Download accent (#RRGGBB)" Margin="0,8,0,3" />
+                <TextBox x:Name="AccentColorBox" Width="120" HorizontalAlignment="Left" />
+                <TextBlock Text="Upload accent (#RRGGBB)" Margin="0,8,0,3" />
+                <TextBox x:Name="SecondaryAccentColorBox" Width="120" HorizontalAlignment="Left" />
+                <TextBlock Text="Font size" Margin="0,8,0,3" />
+                <Slider x:Name="FontSizeSlider" Minimum="9" Maximum="24" TickFrequency="1" IsSnapToTickEnabled="True" />
+
+                <TextBlock Text="POSITION" Foreground="#FFAE5C" FontWeight="Bold" Margin="0,18,0,8" />
+                <StackPanel x:Name="PositionControls">
+                    <TextBlock Text="Anchor" />
+                    <ComboBox x:Name="PositionCombo" Margin="0,4,0,8" />
+                    <TextBlock Text="Monitor" />
+                    <ComboBox x:Name="MonitorCombo" DisplayMemberPath="Name" Margin="0,4,0,8" />
+                    <TextBlock Text="Edge reference" />
+                    <ComboBox x:Name="EdgeReferenceCombo" Margin="0,4,0,8">
+                        <ComboBoxItem Content="Work Area" Tag="WorkArea" />
+                        <ComboBoxItem Content="Full Screen" Tag="FullScreen" />
+                    </ComboBox>
+                    <TextBlock Text="Horizontal offset (DIPs)" />
+                    <TextBox x:Name="OffsetXBox" Width="90" HorizontalAlignment="Left" Margin="0,4,0,8" />
+                    <TextBlock Text="Vertical offset (DIPs)" />
+                    <TextBox x:Name="OffsetYBox" Width="90" HorizontalAlignment="Left" Margin="0,4,0,8" />
+                    <TextBlock Text="Positive X moves right; positive Y moves down. Position stays on-screen."
+                               TextWrapping="Wrap" Foreground="#B9C3D0" />
+                </StackPanel>
+
+                <TextBlock Text="MONITORING" Foreground="#FFAE5C" FontWeight="Bold" Margin="0,18,0,8" />
+                <TextBlock Text="Network interface" />
+                <ComboBox x:Name="InterfaceCombo" DisplayMemberPath="Name" Margin="0,4,0,8" />
+                <TextBlock Text="Automatic prefers active physical-looking adapters with a default gateway, then selects the highest reported link speed. Common virtual adapter names are skipped when a non-virtual option exists. Link-up does not prove internet reachability; adapters are not aggregated."
+                           TextWrapping="Wrap" Foreground="#B9C3D0" Margin="0,0,0,6" />
+                <WrapPanel>
+                    <CheckBox x:Name="DownloadCheck" Content="Download" Margin="0,4,16,4" />
+                    <CheckBox x:Name="UploadCheck" Content="Upload" Margin="0,4,16,4" />
+                    <CheckBox x:Name="PingVisibleCheck" Content="Ping" Margin="0,4,16,4" />
+                    <CheckBox x:Name="JitterCheck" Content="Jitter" Margin="0,4" />
+                    <CheckBox x:Name="PacketLossCheck" Content="Ping loss" Margin="0,4,16,4" />
+                    <CheckBox x:Name="SessionDataCheck" Content="Session data" Margin="0,4" />
+                </WrapPanel>
+                <TextBlock Text="Throughput unit" Margin="0,8,0,3" />
+                <ComboBox x:Name="UnitCombo" Width="180" HorizontalAlignment="Left" SelectedValuePath="Tag">
+                    <ComboBoxItem Content="Bytes per second (B/s)" Tag="BytesPerSecond" />
+                    <ComboBoxItem Content="Bits per second (bps)" Tag="BitsPerSecond" />
+                </ComboBox>
+                <TextBlock Text="Counter sampling interval" Margin="0,8,0,3" />
+                <ComboBox x:Name="IntervalCombo" Width="150" HorizontalAlignment="Left" SelectedValuePath="Tag">
+                    <ComboBoxItem Content="250 ms" Tag="250" />
+                    <ComboBoxItem Content="500 ms" Tag="500" />
+                    <ComboBoxItem Content="750 ms" Tag="750" />
+                    <ComboBoxItem Content="1000 ms" Tag="1000" />
+                    <ComboBoxItem Content="2000 ms" Tag="2000" />
+                    <ComboBoxItem Content="5000 ms" Tag="5000" />
+                </ComboBox>
+                <CheckBox x:Name="PingEnabledCheck" Content="Enable ICMP ping measurements" Margin="0,12,0,4" />
+                <TextBlock Text="Ping target (host name or IP)" Margin="0,4,0,3" />
+                <TextBox x:Name="PingTargetBox" Width="220" HorizontalAlignment="Left" />
+                <TextBlock Text="Ping interval" Margin="0,8,0,3" />
+                <ComboBox x:Name="PingIntervalCombo" Width="150" HorizontalAlignment="Left" SelectedValuePath="Tag">
+                    <ComboBoxItem Content="5 seconds" Tag="5000" />
+                    <ComboBoxItem Content="10 seconds" Tag="10000" />
+                    <ComboBoxItem Content="30 seconds" Tag="30000" />
+                    <ComboBoxItem Content="60 seconds" Tag="60000" />
+                </ComboBox>
+                <TextBlock Text="Ping timeout" Margin="0,8,0,3" />
+                <ComboBox x:Name="PingTimeoutCombo" Width="150" HorizontalAlignment="Left" SelectedValuePath="Tag">
+                    <ComboBoxItem Content="1 second" Tag="1000" />
+                    <ComboBoxItem Content="2 seconds" Tag="2000" />
+                    <ComboBoxItem Content="5 seconds" Tag="5000" />
+                </ComboBox>
+                <TextBlock Text="Ping probes the configured target, not overall internet quality. Jitter is the mean absolute change between consecutive successful replies; ping loss is the failed share of the latest 20 probes (shown after 5)."
+                           TextWrapping="Wrap" Foreground="#B9C3D0" Margin="0,6,0,0" />
+
+                <TextBlock Text="ABOUT" Foreground="#FFAE5C" FontWeight="Bold" Margin="0,18,0,8" />
+                <TextBlock Text="Live interface counters show current traffic, not maximum internet speed. No telemetry or automatic speed tests are performed. ICMP is sent only when enabled."
+                           TextWrapping="Wrap" Foreground="#B9C3D0" />
+            </StackPanel>
+        </ScrollViewer>
+        <DockPanel Grid.Row="2" Margin="0,12,0,0">
+            <Button Content="Reset to Defaults" Click="Reset_Click" HorizontalAlignment="Left" Padding="12,6" />
+            <Button Content="Done" Click="Done_Click" HorizontalAlignment="Right" Padding="18,6" />
+        </DockPanel>
+    </Grid>
+</Window>

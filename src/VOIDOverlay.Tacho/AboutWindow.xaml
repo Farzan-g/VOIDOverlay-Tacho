@@ -1,0 +1,27 @@
+<Window x:Class="VOIDOverlay.Tacho.AboutWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="About VOID Overlay Tacho"
+        Icon="pack://application:,,,/assets/Tacho.ico"
+        Width="380" Height="240" ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Background="#111720" Foreground="#F2F4F7">
+    <Grid Margin="24">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <Image Source="pack://application:,,,/assets/Tacho.ico" Width="48" Height="48" Margin="0,0,14,0" />
+            <StackPanel VerticalAlignment="Center">
+                <TextBlock Text="VOID Overlay Tacho" FontSize="18" FontWeight="SemiBold" />
+                <TextBlock x:Name="VersionText" Foreground="#B9C3D0" />
+            </StackPanel>
+        </StackPanel>
+        <TextBlock Grid.Row="1" Text="Real-time network interface throughput and optional ICMP latency."
+                   TextWrapping="Wrap" VerticalAlignment="Center" />
+        <Button Grid.Row="2" Content="Close" IsDefault="True" Click="Close_Click"
+                HorizontalAlignment="Right" MinWidth="88" Padding="12,6" />
+    </Grid>
+</Window>

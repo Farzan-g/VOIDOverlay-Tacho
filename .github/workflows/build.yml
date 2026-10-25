@@ -1,0 +1,26 @@
+name: VOID Overlay Tacho - Windows verification
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - name: Build Debug
+        run: .\scripts\build.ps1 -Configuration Debug
+        shell: pwsh
+      - name: Test Release
+        run: .\scripts\test.ps1 -Configuration Release
+        shell: pwsh
+      - name: Build Release
+        run: .\scripts\build.ps1 -Configuration Release
+        shell: pwsh
+      - name: Publish Windows x64
+        run: .\scripts\publish.ps1
+        shell: pwsh

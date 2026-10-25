@@ -1,0 +1,11 @@
+# Product-family compatibility notes
+
+The reference audit found that Termo targets WPF/.NET 8 while Metron targets WPF/.NET 10. The product standard and Metron are the newer reference for the overlay-specific positioning and release workflow; Tacho therefore targets `net10.0-windows` and uses WPF plus Windows Forms for the tray.
+
+Tacho follows the Metron six-anchor ordering, working-area/full-screen choice, selected-monitor fallback, offset signs and limits, actual window-size placement, click-through/topmost/locked defaults, disabled background default, Segoe UI, palette, 13-DIP font default, 10-DIP surface padding, dark settings window, and standard tray menu order. Its settings use the same Local AppData JSON and startup registry conventions.
+
+The network-specific selection policy is automatic by default: among active non-loopback/non-tunnel interfaces, skip likely virtual adapters when any physical-looking candidate exists, then prefer adapters reporting a default gateway and choose the highest reported link speed. If none of the physical-looking candidates has a gateway, choose the highest-speed candidate; if only likely virtual adapters are active, they remain eligible. Ties are ordered by interface ID. It does not aggregate interfaces; users can pin any listed adapter manually. Virtual-device detection uses common name/description markers and cannot classify every vendor's adapter.
+
+Latency is opt-in. The default ICMP destination is `1.1.1.1`, and the default cadence/timeout are 10 seconds/2 seconds. Jitter is mean absolute difference between consecutive successful latency replies in the most recent 20 probes. Ping loss is the failed share of that rolling window, and is unavailable until five probes exist.
+
+Tacho does not reuse Termo or Metron binaries at runtime. Its canonical `assets/Tacho.ico` is a multi-resolution derivative of the supplied `assets/Tacho.png`; the original PNG is kept unchanged. The ICO is the PE application icon and a WPF resource used by the overlay, settings, About window, and system tray. Tacho has no telemetry, speed tests, traffic inspection, or persistent traffic history. Session byte totals are in-memory estimates from counter deltas for the current selected adapter; changing adapters resets them, and traffic during downtime is not included.

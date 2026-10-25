@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <ApplicationIcon>assets\Tacho.ico</ApplicationIcon>
+    <AssemblyName>VOIDOverlay.Tacho</AssemblyName>
+    <RootNamespace>VOIDOverlay.Tacho</RootNamespace>
+    <AssemblyTitle>VOIDOverlay Tacho</AssemblyTitle>
+    <AssemblyDescription>A lightweight network monitoring overlay.</AssemblyDescription>
+    <InformationalVersion>Development</InformationalVersion>
+    <Product>VOIDOverlay Tacho</Product>
+    <Company>VOID Overlay</Company>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <NoWarn>$(NoWarn);WFO0003</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Resource Include="assets\Tacho.ico" />
+  </ItemGroup>
+</Project>
